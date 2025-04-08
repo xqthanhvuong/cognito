@@ -1,0 +1,9 @@
+<div class="home-container">
+    <h2>Welcome to Home Page!</h2>
+    <p>This page is protected. Only logged-in users can access it.</p>
+    <p style="margin-top: 0; padding-top: 0;  padding-bottom: 0; margin-bottom: 5px;" *ngIf="user">Hello, {{ user.username }}!</p>
+    <p style="margin-top: 0; padding-top: 0;  padding-bottom: 0; margin-bottom: 5px;" *ngIf="user">Your ID: {{ user.sub }}</p>
+    <p style="margin-top: 0; padding-top: 0;" *ngIf="user">Your email: {{ user.email }}</p>
+    <button (click)="handleSignOut()"> Log Out</button>
+  </div>
+  

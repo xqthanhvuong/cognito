@@ -1,0 +1,172 @@
+<!-- <div class="auth-container">
+    <h2>Authentication</h2>
+
+    <div class="signup">
+      <h3>Sign Up</h3>
+      <input type="text" [(ngModel)]="username" placeholder="Username" />
+      <input type="email" [(ngModel)]="email" placeholder="Email" />
+      <input type="password" [(ngModel)]="password" placeholder="Password" />
+      <button (click)="handleSignUp()">Sign Up</button>
+    </div>
+  
+    <div class="confirm-signup">
+      <h3>Confirm Sign Up</h3>
+      <input type="text" [(ngModel)]="username" placeholder="Username" />
+      <button (click)="handleSignUpConfirmation()">Confirm Sign Up</button>
+    </div>
+  
+
+    <div class="signin">
+      <h3>Sign In</h3>
+      <input type="text" [(ngModel)]="username" placeholder="Username" />
+      <input type="password" [(ngModel)]="password" placeholder="Password" />
+      <button (click)="handleSignIn()">Sign In</button>
+    </div>
+  
+
+    <div class="google-signin">
+      <h3>Sign In with Google</h3>
+      <button (click)="googleSignIn()">Sign in with Google</button>
+    </div>
+  
+
+    <div class="signout">
+      <h3>Sign Out</h3>
+      <button (click)="handleSignOut()">Sign Out</button>
+    </div>
+
+
+        <div class="signout">
+          <h3>check user</h3>
+          <button (click)="checkUser()">check user</button>
+        </div>
+
+  </div>
+   -->
+<!-- 
+   <amplify-authenticator>
+   </amplify-authenticator> -->
+
+   
+   
+   
+   <div id="container" #containerDiv class="container">
+    <div *ngIf="showNotification" class="notification">
+      {{ notificationMessage }}
+    </div>
+    <div class="row">
+      <div class="col align-items-center flex-col sign-up">
+        <div *ngIf="!isSignUpConfirmationVisible" class="form-wrapper align-items-center">
+          <div class="form sign-up">
+            <div class="input-group">
+              <i class='bx bxs-user'></i>
+              <input type="text" [(ngModel)]="username" placeholder="Username">
+            </div>
+            <div class="input-group">
+              <i class='bx bx-mail-send'></i>
+              <input type="email" [(ngModel)]="email" placeholder="Email">
+            </div>
+            <div class="input-group">
+              <i class='bx bxs-lock-alt'></i>
+              <input type="password" [(ngModel)]="password" placeholder="Password">
+            </div>
+            <div class="input-group">
+              <i class='bx bxs-lock-alt'></i>
+              <input type="password" [(ngModel)]="confirmPassword" placeholder="Confirm password">
+            </div>
+            <button (click)="handleSignUp()">
+              Sign up
+            </button>
+            <p>
+              <span>
+                Already have an account?
+              </span>
+              <b (click)="toggle()" class="pointer">
+                Sign in here
+              </b>
+            </p>
+          </div>
+        </div>
+        <div *ngIf="isSignUpConfirmationVisible" class="form-wrapper align-items-center">
+          <div class="form sign-up">
+            <div class="input-group">
+              <i class='bx bxs-lock-alt'></i>
+              <input type="text" [(ngModel)]="confirmationCode" placeholder="Code">
+            </div>
+            <button (click)="handleSignUpConfirmation()">
+              Confirm sign up
+            </button>
+            <p>
+              <span>
+                Already have an account?
+              </span>
+              <b (click)="toggle()" class="pointer">
+                Sign in here
+              </b>
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Phần sign-in cho người dùng đã có tài khoản -->
+      <div class="col align-items-center flex-col sign-in">
+        <div class="form-wrapper align-items-center">
+          <div class="form sign-in">
+            <div class="input-group">
+              <i class='bx bxs-user'></i>
+              <input type="text" [(ngModel)]="username" placeholder="Username">
+            </div>
+            <div class="input-group">
+              <i class='bx bxs-lock-alt'></i>
+              <input type="password" [(ngModel)]="password" placeholder="Password">
+            </div>
+            <button (click)="handleSignIn()">
+              Sign in
+            </button>
+  
+            <!-- Nút đăng nhập với Google -->
+            <button class="google-btn" (click)="googleSignIn()">
+              <img style="margin-right: 5px;" src="https://d19nijclqkl93.cloudfront.net/default-assets/icon/cognito-icon-idp-google-light.svg" alt="">
+              Login with Google
+            </button>
+            <button class="google-btn" (click)="faceSignIn()">
+              <img style="margin-right: 5px;" src="https://www.google.com/imgres?q=logo%20facebook%20vu%C3%B4ng%20png&imgurl=https%3A%2F%2Fpng.pngtree.com%2Felement_our%2Fpng%2F20181011%2Ffacebook-social-media-icon-design-template-vector-png_126984.jpg&imgrefurl=https%3A%2F%2Fvi.pngtree.com%2Ffree-png-vectors%2Ffacebook-logo&docid=Ve5g4TXn7prvcM&tbnid=QLGd8DDfZ2yL8M&vet=12ahUKEwi9rP37ssOMAxUvk1YBHddtAYAQM3oECGQQAA..i&w=360&h=360&hcb=2&ved=2ahUKEwi9rP37ssOMAxUvk1YBHddtAYAQM3oECGQQAA" alt="">
+              Login with facebook
+            </button>
+    
+            <p>
+              <b>
+                Forgot password?
+              </b>
+            </p>
+            <p>
+              <span>
+                Don't have an account?
+              </span>
+              <b (click)="toggle()" class="pointer">
+                Sign up here
+              </b>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Phần content-row sẽ hiển thị welcome hoặc join message -->
+    <div class="row content-row">
+      <div class="col align-items-center flex-col">
+        <div class="text sign-in">
+          <h2>Welcome</h2>
+        </div>
+      </div>
+      <div class="col align-items-center flex-col">
+        <div class="text sign-up">
+          <h2>Join with us</h2>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Phần nhập mã xác nhận khi đăng ký -->
+
+  </div>
+  
