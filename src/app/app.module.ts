@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './auth.interceptor'; 
 import { HomeComponent } from './components/home/home.component';  
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { VideoCallComponent } from './components/video-call/video-call.component';
 
 Amplify.configure({
   Auth:{
@@ -34,14 +35,15 @@ Amplify.configure({
   declarations: [
     AppComponent,
     AuthComponent,
-    HomeComponent
+    HomeComponent,
+    VideoCallComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AmplifyAuthenticatorModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

@@ -1,0 +1,46 @@
+<div class="container">
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
+  
+    <!-- Heading for the room -->
+    <h2>Video Call Room</h2>
+  
+    <!-- Form to create or join a room -->
+    <div class="room-join">
+      <input
+        type="text"
+        [(ngModel)]="roomId"
+        placeholder="Enter room ID to join"
+        class="room-input"
+      />
+      <button (click)="joinRoom(roomId)" class="btn join-room">
+        Join Room
+      </button>
+      <button (click)="createRoom()" class="btn create-room">
+        Create New Room
+      </button>
+    </div>
+  
+    <!-- Video container for both local and remote videos -->
+    <div class="video-container">
+      <div class="video-wrapper">
+        <h3>Your Video</h3>
+        <!-- Local video element -->
+        <video
+          id="localVideo"
+          autoplay
+          muted
+          playsinline
+          class="video"
+        ></video>
+      </div>
+  
+      <!-- Container to show remote peer videos -->
+      <div id="remoteVideos" class="remote-videos">
+        <!-- Video elements for remote peers will be appended here -->
+      </div>
+    </div>
+  </div>
+  

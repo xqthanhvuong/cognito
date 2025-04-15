@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class HomeService {
 
-  private apiUrl = 'http://localhost:8000/video-call/api/users/register'; // URL của backend
+  private apiUrl = 'http://localhost:8000/users/register'; // URL của backend
 
   constructor(private http: HttpClient) {}
 
